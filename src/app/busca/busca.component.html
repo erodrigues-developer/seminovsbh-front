@@ -1,0 +1,79 @@
+<p-dropdown 
+    [(ngModel)]="idMarcaSelecionada"
+    placeholder="Escolha uma Marca" 
+    [options]="marcas" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="getModelos(element);validacaoBusca()"
+    #element
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="idModeloSelecionado"
+    placeholder="Escolha um Modelo" 
+    [options]="modelos" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="getCidades();validacaoBusca()"
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="idCidadeSelecionada"
+    placeholder="Todas as Cidades" 
+    [options]="cidades" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="validacaoBusca()"
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="valorDeSelecionado"
+    placeholder="Valor De" 
+    [options]="valorDe" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="validacaoBusca()"
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="valorAteSelecionado"
+    placeholder="Valor Até" 
+    [options]="valorAte" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="validacaoBusca()"
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="anoDeSelecionado"
+    placeholder="Ano De" 
+    [options]="anoDe" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="validacaoBusca()"
+>
+</p-dropdown>
+
+<p-dropdown 
+    [(ngModel)]="anoAteSelecionado"
+    placeholder="Ano Até" 
+    [options]="anoAte" 
+    [filter]="true"
+    autoWidth="true"
+    autofocus="true"
+    (onChange)="validacaoBusca()"
+>
+</p-dropdown>
+
+<button pButton type="button" class="ui-button-raised" label="Buscar" [disabled]="invalido" (click)="buscar()"></button>
