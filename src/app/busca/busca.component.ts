@@ -28,6 +28,7 @@ export class BuscaComponent implements OnInit {
   public pagina = 1;
 
   public invalido = true;
+  public carregando: Boolean = true;
 
   constructor(
     private serviceBusca : BuscaService,
@@ -116,6 +117,7 @@ export class BuscaComponent implements OnInit {
       }
 
       this.marcas = marcaFormatada;
+      this.carregando = false;
     });
   }
 
