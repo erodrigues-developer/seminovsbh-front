@@ -1,5 +1,5 @@
 export const VALORDE = [
-    {value: 0, label: 'R$ 0,00'},
+    {value: 0, label: 'Valor De'},
     {value: 2000, label: 'R$ 2.000,00'},
     {value: 4000, label: 'R$ 4.000,00'},
     {value: 6000, label: 'R$ 6.000,00'},
@@ -25,7 +25,7 @@ export const VALORDE = [
     {value: 100000, label: 'R$ 100.000,00'}
 ];
 export const VALORATE = [
-    {value: 0, label: 'R$ 0,00'},
+    {value: 0, label: 'Valor Até'},
     {value: 2000, label: 'R$ 2.000,00'},
     {value: 4000, label: 'R$ 4.000,00'},
     {value: 6000, label: 'R$ 6.000,00'},
