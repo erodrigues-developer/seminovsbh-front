@@ -27,7 +27,7 @@ export class ResultadoService {
 
     const URIResultados = `/busca?marca=${marca}&modelo=${idModelo}&cidade=${idCidade}&valorDe=${valorDe}&valorAte=${valorAte}&anoDe=${anoDe}&anoAte=${anoAte}&pagina=${pagina}`;
     const URLResultados = environment.apiURL + URIResultados;
-    console.log(URLResultados);
+    
     return this.http.get(URLResultados)
       .pipe(
         tap(data => this.log('fetched Resultados')),

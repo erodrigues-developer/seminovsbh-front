@@ -55,7 +55,7 @@ export class BuscaComponent implements OnInit {
     }
 
     const URIBusca = `resultado/${this.nomeMarcaSelecionada}/${this.idModeloSelecionado}/${this.idCidadeSelecionada}/${this.valorDeSelecionado}/${this.valorAteSelecionado}/${this.anoDeSelecionado}/${this.anoAteSelecionado}/1`;
-    console.log(URIBusca);
+    
     this.rota.navigate([URIBusca]);
   }
 

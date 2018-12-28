@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResultadoService } from '../resultado.service';
 
 @Component({
@@ -21,10 +21,13 @@ export class ResultadoComponent implements OnInit {
   public pagina;
 
   public carregando: Boolean = true;
+  public anuncioSelecionado;
+  public displayDialog: boolean;
 
   constructor(
     private rota : ActivatedRoute,
-    private serviceResultado : ResultadoService
+    private serviceResultado : ResultadoService,
+    private route : Router
   ) { }
 
   ngOnInit() {
@@ -61,5 +64,15 @@ export class ResultadoComponent implements OnInit {
       this.resultados = resultado;
       this.carregando = false;
     });
+  }
+
+  abrirAnuncio(event: Event, anuncio) {
+    this.anuncioSelecionado = anuncio;
+    this.displayDialog = true;
+    event.preventDefault();
+  }
+
+  onDialogHide() {
+    this.anuncioSelecionado = null;
   }
 }

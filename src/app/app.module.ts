@@ -19,6 +19,8 @@ import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CardModule } from 'primeng/card';
     DataViewModule,
     ProgressSpinnerModule,
     CardModule,
+    DialogModule,
+    ToolbarModule,
   ],
   providers: [
     BuscaService,

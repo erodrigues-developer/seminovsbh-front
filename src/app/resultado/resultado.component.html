@@ -1,57 +1,83 @@
-<p-progressSpinner *ngIf="carregando"></p-progressSpinner>
+<p-progressSpinner class="progress" *ngIf="carregando"></p-progressSpinner>
 <div  *ngIf="!carregando">
-  <p-dataView #dv [value]="resultados" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="anuncio">
-  <p-header>
-      <div class="ui-helper-clearfix">
-          <div class="ui-g">
-              <div class="ui-g-6 ui-md-4 filter-container">
-                  <div style="position:relative">
-                      <input type="search" pInputText placeholder="Pesquise pelo título do anúncio" (keyup)="dv.filter($event.target.value)">
-                  </div>
-              </div>
-              <div class="ui-g-6 ui-md-4" style="text-align:right">
-                  <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-              </div>
-          </div>
-      </div>
-  </p-header>
-  <ng-template let-resultados pTemplate="listItem">
-      <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-          <div class="ui-g-12 ui-md-3" style="text-align:center">
-              <img src="{{resultados.imagem}}">
-          </div>
-          <div class="ui-g-12 ui-md-8 car-details">
-              <div class="ui-g">
-                  <div class="ui-g-2 ui-sm-6">Anúncio: </div>
-                  <div class="ui-g-10 ui-sm-6"><b>{{resultados.anuncio}}</b></div>
+    <p-toolbar>
+        <div class="ui-toolbar-group-right">
+            <a  routerLink="/" routerLinkActive="active">
+                <button pButton type="button" label="Nova Busca" icon="pi pi-search"></button>
+            </a>
+        </div>
+    </p-toolbar>
+    <p-dataView #dv [value]="resultados" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="anuncio">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-6 ui-md-4 filter-container">
+                    <div style="position:relative">
+                        <input type="search" pInputText placeholder="Pesquisar Anúncio" (keyup)="dv.filter($event.target.value)">
+                    </div>
+                </div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-resultados pTemplate="listItem">
+        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+            <div class="ui-g-12 ui-md-3" style="text-align:center">
+                <img src="{{resultados.imagem}}" style="border-radius: 3px">
+            </div>
+            <div class="ui-g-12 ui-md-8 car-details">
+                <div class="ui-g">
+                    <div class="ui-g-2 ui-sm-6">Anúncio: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{resultados.anuncio}}</b></div>
 
-                  <div class="ui-g-2 ui-sm-6">Ano: </div>
-                  <div class="ui-g-10 ui-sm-6"><b>{{resultados.ano}}</b></div>
+                    <div class="ui-g-2 ui-sm-6">Ano: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{resultados.ano}}</b></div>
 
-                  <div class="ui-g-2 ui-sm-6">Modelo: </div>
-                  <div class="ui-g-10 ui-sm-6"><b>{{resultados.nome}}</b></div>
+                    <div class="ui-g-2 ui-sm-6">Modelo: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{resultados.nome}}</b></div>
 
-                  <div class="ui-g-2 ui-sm-6">Marca: </div>
-                  <div class="ui-g-10 ui-sm-6"><b>{{resultados.marca}}</b></div>
+                    <div class="ui-g-2 ui-sm-6">Marca: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{resultados.marca}}</b></div>
 
-                  <div class="ui-g-2 ui-sm-6">Código do Anúncio: </div>
-                  <div class="ui-g-10 ui-sm-6"><b>{{resultados.id}}</b></div>
-              </div>
-          </div>
-          <div class="ui-g-12 ui-md-1 search-icon">
-              <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)"></button>
-          </div>
-      </div>
-  </ng-template>
-  <ng-template let-resultados pTemplate="gridItem">
-      <div style="padding:.5em" class="ui-g-12 ui-md-3">
-          <p-panel [header]="resultados.anuncio" [style]="{'text-align':'center'}">
-              <img src="{{resultados.imagem}}" width="60">
-              <div class="car-detail">{{resultados.modelo}} - {{resultados.ano}}</div>
-              <hr class="ui-widget-content" style="border-top:0">
-              <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)" style="margin-top:0"></button>
-          </p-panel>
-      </div>
-  </ng-template>
-  </p-dataView>
+                    <div class="ui-g-2 ui-sm-6">Código do Anúncio: </div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{resultados.id}}</b></div>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-md-1 search-icon">
+                <button pButton type="button" icon="pi pi-plus" (click)="abrirAnuncio($event, resultados)"></button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-resultados pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="resultados.anuncio" [style]="{'text-align':'center'}">
+                <img src="{{resultados.imagem}}" width="60">
+                <div class="car-detail">{{resultados.modelo}} - {{resultados.ano}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+                <button pButton type="button" icon="pi pi-plus" (click)="abrirAnuncio($event, resultados)" style="margin-top:0"></button>
+            </p-panel>
+        </div>
+    </ng-template>
+    </p-dataView>
+
+    <p-dialog header="Detalhes do Anúncio" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{width: '80%'}"  (onAfterHide)="onDialogHide()">
+        <div class="ui-g" *ngIf="anuncioSelecionado">
+            <div class="ui-g-12" style="text-align:center">
+                <img src="{{anuncioSelecionado.imagem}}">
+            </div>
+            <div class="ui-g-4">Anúncio: </div>
+            <div class="ui-g-8">{{anuncioSelecionado.anuncio}}</div>
+
+            <div class="ui-g-4">Marca: </div>
+            <div class="ui-g-8">{{anuncioSelecionado.marca}}</div>
+
+            <div class="ui-g-4">Modelo: </div>
+            <div class="ui-g-8">{{anuncioSelecionado.nome}}</div>
+
+            <div class="ui-g-4">Ano: </div>
+            <div class="ui-g-8">{{anuncioSelecionado.ano}}</div>
+        </div>
+    </p-dialog>
 </div>
